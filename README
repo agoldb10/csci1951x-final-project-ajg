@@ -1,7 +1,7 @@
 Note: This project should be available at https://github.com/agoldb10/csci1951x-final-project-ajg.
 
 
---------------------- Project Summary ---------------------
+----------------------------- Project Summary ---------------------------------
 
 I used metaprogramming to write a linear_combination tactic.  This finishing
 tactic attempts to prove the goal by creating a linear combination of a list of
@@ -18,18 +18,22 @@ and matching the result of that computation to the goal.
 
 
 
---------------------- Included Files ---------------------
+------------------------------ Included Files ---------------------------------
 
-All of my code files for this project are in the src folder. Within that directory, the ajg_final_proj.lean file contains the code for the completed tactic.  Helper lemmas are contained in lemmas.lean.  Additionally, helper tactics are contained in make_sum_of_hyps.lean, simplify.lean, and match.lean. The ajg_tests_final_project.lean file contains some tests demonstrating how to
+All of my code files for this project are in the src folder. Within that directory, the ajg_final_proj.lean file contains the code for the completed
+tactic.  Helper lemmas are contained in lemmas.lean.  Additionally, helper
+tactics are contained in make_sum_of_hyps.lean, simplify.lean, and match.lean.
+The ajg_tests_final_project.lean file contains some tests demonstrating how to
 use this tactic, and some examples of incorrect applications of the tactic.
 
 
 
- ------- Potential Areas for Future Improvement ----------
+------------------ Potential Areas for Future Improvement ---------------------
 
 First of all, the interactive tactic takes in two separate lists, one containing
 the names of hypotheses and one containing coefficients to multiply with the 
-corresponding hypotheses.  Originally, I was planning on having the interactive tactic take in a list of pairs, where each pair contains the name of a
+corresponding hypotheses.  Originally, I was planning on having the interactive
+tactic take in a list of pairs, where each pair contains the name of a
 hypothesis and the coefficient to multiply by that hypothesis.  I decided to
 use two separate lists because I encountered difficulties in implementing the
 pair design.  I think both formats have their merits, and the separate lists
@@ -39,7 +43,10 @@ changing the tactic input to take in a list of pairs instead.
 
 Additionally, this tactic requires the coefficients and the sides of the
 relevant equalities to have the same type, and this type must fulfill the
-add_group condition.  In order to match the linear combination to the goal, the tactic subtracts the right-hand side from the left-hand side for each of those two equalities.  Without this step, the tactic would not be able to match the target in cases where the linear combination needs to simplify across sides of
+add_group condition.  In order to match the linear combination to the goal, the
+tactic subtracts the right-hand side from the left-hand side for each of those
+two equalities.  Without this step, the tactic would not be able to match the
+target in cases where the linear combination needs to simplify across sides of
 the equality in order to match the target.  For example, the tactic would fail
 on the following example without this step:
 
@@ -49,7 +56,12 @@ by linear_combination [ha, hab] [1/6, 1/3]
 
 I decided that the tactic should be able to work on such cases, so I made the
 design choice to move all the terms to one side of the equation.  Unfortunately,
-as far as I can tell, this approach requires the type of relevant values to be an add_group. The set of natural numbers is not an add_group, so this approach means that the tactic does not work on natural numbers.  I am not sure how to get around this requirement without sacrificing the tactic's ability to work in the aforementioned cases, but that would be another possible improvement to this project.
+as far as I can tell, this approach requires the type of relevant values to be an
+add_group. The set of natural numbers is not an add_group, so this approach means
+that the tactic does not work on natural numbers.  I am not sure how to get
+around this requirement without sacrificing the tactic's ability to work in the
+aforementioned cases, but that would be another possible improvement to this
+project.
 
 
 
