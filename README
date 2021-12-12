@@ -20,7 +20,8 @@ and matching the result of that computation to the goal.
 
 ------------------------------ Included Files ---------------------------------
 
-All of my code files for this project are in the src folder. Within that directory, the ajg_final_proj.lean file contains the code for the completed
+All of my code files for this project are in the src folder. Within that
+directory, the ajg_final_proj.lean file contains the code for the completed
 tactic.  Helper lemmas are contained in lemmas.lean.  Additionally, helper
 tactics are contained in make_sum_of_hyps.lean, simplify.lean, and match.lean.
 The ajg_tests_final_project.lean file contains some tests demonstrating how to
